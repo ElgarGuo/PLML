@@ -7,114 +7,40 @@
 
 <title>Physics Lectures</title>
 
-<style>
+<script>
+(function () {
 
-/* =========================
-   BASE
-========================= */
+    // 1. 讀取語言
+    const lang = navigator.language || navigator.userLanguage || "en";
 
-body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-    background:#ffffff;
-    color:#1d1d1f;
-}
+    // 2. 判斷是否中文
+    const isZh = lang.startsWith("zh");
 
-/* =========================
-   HERO
-========================= */
+    // 3. 設定目標頁（避免 /zh/en bug）
+    const target = isZh ? "/PLML/zh/" : "/PLML/en/";
 
-.hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+    // 4. 防止無限跳轉（如果已在正確頁面）
+    if (!location.pathname.startsWith(target)) {
+        window.location.replace(target);
+    }
 
-    /* space for sidebar */
-    padding-left:260px;
-}
-
-h1{
-    font-size:56px;
-    font-weight:600;
-    margin:0;
-    letter-spacing:-0.5px;
-}
-
-h2{
-    font-size:22px;
-    font-weight:400;
-    color:#6e6e73;
-    margin-top:20px;
-}
-
-.small{
-    margin-top:40px;
-    font-size:14px;
-    color:#86868b;
-}
-
-/* =========================
-   SIDEBAR placeholder style
-========================= */
-
-#sidebar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:260px;
-    height:100vh;
-}
-
-</style>
+})();
+</script>
 
 </head>
 
 <body>
 
-<!-- =========================
-     SIDEBAR (loaded externally)
-========================= -->
-<div id="sidebar"></div>
-
-<script>
-/* =========================
-   LOAD SIDEBAR (single source)
-========================= */
-
-fetch("/PLML/assets/components/sidebar.html")
-    .then(res => res.text())
-    .then(html => {
-        document.getElementById("sidebar").innerHTML = html;
-
-        // language detection (your system)
-        const lang = navigator.language || "en";
-
-        if(lang.startsWith("zh")){
-            document.body.classList.add("zh");
-        } else {
-            document.body.classList.add("en");
-        }
-    });
-</script>
-
-<!-- =========================
-     MAIN CONTENT
-========================= -->
-
-<div class="hero">
-
-<h1>Physics Lectures</h1>
-
-<h2>Lecture Notes on Theoretical Physics</h2>
-
-<div class="small">
-Physics Knowledge System (TP / CM / QM / SM / QI)
-</div>
-
-</div>
+<!-- fallback（如果 JS 被關閉） -->
+<noscript>
+    <div style="text-align:center;margin-top:20vh;font-family:sans-serif;">
+        <h2>Physics Lectures</h2>
+        <p>
+            <a href="/PLML/zh/">中文</a> |
+            <a href="/PLML/en/">English</a>
+        </p>
+    </div>
+</noscript>
 
 </body>
 
