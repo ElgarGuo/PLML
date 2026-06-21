@@ -9,14 +9,60 @@
 
 <link rel="stylesheet" href="../assets/css/style.css">
 
+<style>
+/* 避免 sidebar 覆蓋內容 */
+body{
+    margin:0;
+}
+
+#sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:260px;
+    height:100vh;
+}
+
+/* 讓主內容避開 sidebar */
+.hero, .section{
+    padding-left:260px;
+}
+</style>
+
 </head>
 
 <body>
 
+<!-- =========================
+     SIDEBAR (external)
+========================= -->
+<div id="sidebar"></div>
+
+<script>
+/* =========================
+   LOAD SIDEBAR MODULE
+========================= */
+
+fetch("/PLML/assets/components/sidebar.html")
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById("sidebar").innerHTML = html;
+
+        // language system (zh version page)
+        document.body.classList.add("zh");
+    });
+</script>
+
+<!-- =========================
+     NAV (optional top switch)
+========================= -->
 <nav class="nav">
     <a href="../en/">English</a>
 </nav>
 
+<!-- =========================
+     HERO
+========================= -->
 <section class="hero">
 
 <h1>郭瀚翔的物理教程</h1>
@@ -25,6 +71,9 @@
 
 </section>
 
+<!-- =========================
+     CONTENT
+========================= -->
 <section class="section">
 
 <div class="card">
