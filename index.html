@@ -1,26 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<title>Physics AI Notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Physics Lectures</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    background:#ffffff;
+    color:#1d1d1f;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+h1{
+    font-size:56px;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.5px;
+}
+
+h2{
+    font-size:22px;
+    font-weight:400;
+    color:#6e6e73;
+    margin-top:20px;
+}
+
+.small{
+    margin-top:40px;
+    font-size:14px;
+    color:#86868b;
+}
+
+</style>
 
 <script>
 
-const lang = navigator.language;
+function detectLang(){
+    const lang = navigator.language || navigator.userLanguage;
+    return lang.startsWith("zh") ? "zh" : "en";
+}
 
-if(lang.startsWith("zh")){
-    window.location.href = "./zh/";
-}
-else{
-    window.location.href = "./en/";
-}
+window.addEventListener("DOMContentLoaded", () => {
+
+    const lang = detectLang();
+
+    setTimeout(() => {
+        window.location.href = "./" + lang + "/";
+    }, 1200);
+
+});
 
 </script>
 
 </head>
+
 <body>
 
-Redirecting...
+<div class="hero">
+
+<h1>Physics Lectures</h1>
+
+<h2>Lecture Notes on Theoretical Physics</h2>
+
+<div class="small">
+Redirecting based on language preference...
+</div>
+
+</div>
 
 </body>
+
 </html>
