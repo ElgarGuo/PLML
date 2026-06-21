@@ -1,5 +1,5 @@
 /* =========================
-   BASE (Apple Style)
+   BASE STYLE (Apple-like)
 ========================= */
 
 body{
@@ -23,12 +23,12 @@ body{
 .nav a{
     text-decoration:none;
     color:#0071e3;
-    font-size:16px;
     margin-left:15px;
+    font-size:14px;
 }
 
 /* =========================
-   HERO SECTION
+   HERO
 ========================= */
 
 .hero{
@@ -38,7 +38,9 @@ body{
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding-left:260px; /* space for sidebar */
+
+    /* important: avoid sidebar overlap */
+    padding-left:260px;
 }
 
 h1{
@@ -56,14 +58,14 @@ h2{
 }
 
 /* =========================
-   CONTENT SECTION
+   CONTENT
 ========================= */
 
 .section{
     max-width:1000px;
     margin:0 auto;
     padding:60px 20px;
-    padding-left:280px; /* avoid sidebar overlap */
+    padding-left:280px;
 }
 
 .card{
@@ -86,7 +88,7 @@ h2{
 }
 
 /* =========================
-   SIDEBAR (GLOBAL)
+   SIDEBAR (GLOBAL TP SYSTEM)
 ========================= */
 
 .sidebar{
@@ -96,37 +98,58 @@ h2{
     width:260px;
     height:100vh;
     background:#f5f5f7;
-    padding:30px 20px;
-    overflow-y:auto;
     border-right:1px solid #e5e5e5;
+    padding:25px 18px;
+    overflow-y:auto;
 }
 
+/* title */
 .sidebar h3{
-    font-size:16px;
-    margin-bottom:20px;
+    font-size:15px;
+    margin-bottom:15px;
 }
 
+/* section label */
 .sidebar p{
-    font-size:12px;
+    font-size:11px;
     color:#86868b;
-    margin-top:20px;
-    margin-bottom:10px;
+    margin:18px 0 8px 0;
     letter-spacing:0.5px;
 }
 
+/* links */
 .sidebar a{
     display:block;
-    padding:8px 0;
+    padding:6px 0;
     text-decoration:none;
     color:#1d1d1f;
     font-size:14px;
     border-radius:6px;
+    transition:0.15s;
 }
 
 .sidebar a:hover{
     color:#0071e3;
     background:#e8e8ed;
     padding-left:8px;
+}
+
+/* =========================
+   LANGUAGE SWITCH SYSTEM
+========================= */
+
+/* hidden by default */
+.lang-zh, .lang-en{
+    display:none;
+}
+
+/* show based on body class */
+body.zh .lang-zh{
+    display:block;
+}
+
+body.en .lang-en{
+    display:block;
 }
 
 /* =========================
@@ -141,7 +164,7 @@ h2{
     height:auto;
 }
 
-.section, .hero{
+.hero, .section{
     padding-left:20px;
 }
 
