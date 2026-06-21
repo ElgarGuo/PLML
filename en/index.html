@@ -9,14 +9,66 @@
 
 <link rel="stylesheet" href="../assets/css/style.css">
 
+<style>
+
+/* =========================
+   layout shift for sidebar
+========================= */
+
+body{
+    margin:0;
+}
+
+/* sidebar container */
+#sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:260px;
+    height:100vh;
+}
+
+/* main content offset */
+.hero, .section{
+    padding-left:260px;
+}
+
+</style>
+
 </head>
 
 <body>
 
+<!-- =========================
+     SIDEBAR (loaded externally)
+========================= -->
+<div id="sidebar"></div>
+
+<script>
+/* =========================
+   LOAD SIDEBAR MODULE
+========================= */
+
+fetch("/PLML/assets/components/sidebar.html")
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById("sidebar").innerHTML = html;
+
+        // language = English page
+        document.body.classList.add("en");
+    });
+</script>
+
+<!-- =========================
+     TOP NAV SWITCH
+========================= -->
 <nav class="nav">
     <a href="../zh/">中文</a>
 </nav>
 
+<!-- =========================
+     HERO
+========================= -->
 <section class="hero">
 
 <h1>Han-Hsiang Kuo</h1>
@@ -25,6 +77,9 @@
 
 </section>
 
+<!-- =========================
+     CONTENT
+========================= -->
 <section class="section">
 
 <div class="card">
